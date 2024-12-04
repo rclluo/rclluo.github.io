@@ -1,4 +1,5 @@
 <h1>Hello!</h1>
+<p>You can you this tool to encrypt text with a key!</p>
 <label for="Message">Message:</label>
 <input type="text" id="Message" name="Message">
 <label for="Key">Key:</label>
@@ -10,13 +11,31 @@
 <button onclick="
   let message = document.getElementById('Message').value;
   let key = document.getElementById('Key').value;
-  let ret = '';
-  for (let i = 0; i < message.length; i++) {
-      const messageIndex = characters.indexOf(message[i]);
-      const keyIndex = characters.indexOf(key[i % key.length]);
-      const newIndex = (messageIndex + Math.pow(keyIndex, keyIndex) % mod) % mod;
-      ret += characters[newIndex];
+  for (let i = 0; i < key.length; i++) {
+    let ret = '';
+    for (let j = 0; j < message.length; j++) {
+        const messageIndex = characters.indexOf(message[j]);
+        const keyIndex = characters.indexOf(key[i % key.length]);
+        const newIndex = (messageIndex + Math.pow(keyIndex, keyIndex) % mod) % mod;
+        ret += characters[newIndex];
+    }
+    message=ret
   }
-  document.getElementById('Output').value = ret;
-">Click me</button>
+  document.getElementById('Output').value = message;
+">Encrypt</button>
+<button onclick="
+  let message = document.getElementById('Message').value;
+  let key = document.getElementById('Key').value;
+  for (let i = 0; i < key.length; i++) {
+    let ret = '';
+    for (let j = 0; j < message.length; j++) {
+        const messageIndex = characters.indexOf(message[j]);
+        const keyIndex = characters.indexOf(key[i % key.length]);
+        const newIndex = ((messageIndex - Math.pow(keyIndex, keyIndex) % mod) + mod) % mod;
+        ret += characters[newIndex];
+    }
+    message=ret
+  }
+  document.getElementById('Output').value = message;
+">Decrypt</button>
 <input type="Output" id="Output" name="Output">
