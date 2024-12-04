@@ -1,9 +1,9 @@
 <h1>Hello!</h1>
 <p>You can you this tool to encrypt text with a key!</p>
 <label for="Message">Message:</label>
-<input type="text" id="Message" name="Message">
+<textarea id="Message" name="Message" rows=10 cols=100></textarea>
 <label for="Key">Key:</label>
-<input type="text" id="Key" name="Key">
+<textarea id="Key" name="Key" rows=5 cols=100></textarea>
 <script>
   const str="`1234567890-=qwertyuiop[]asdfghjkl;'zxcvbnm,./~!@#$%^&*()_+QWERTYUIOP{|}ASDFGHJKL:ZXCVBNM<>? \n";
   const characters=str.split("");
@@ -39,4 +39,4 @@
   }
   document.getElementById('Output').value = message;
 ">Decrypt</button>
-<input type="Output" id="Output" name="Output">
+<textarea id="Output" name="Output" rows=10 cols=100></textarea>
