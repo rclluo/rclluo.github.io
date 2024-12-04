@@ -3,4 +3,20 @@
 <input type="text" id="Message" name="Message">
 <label for="Key">Key:</label>
 <input type="text" id="Key" name="Key">
-<button onclick="document.getElementById('demo').innerHTML = Date()">Click me</button>
+<script>
+  const characters=[" ","'","!","#","$","%","&","(",")","*","+",",","-",".","/","0","1","2","3","4","5","6","7","8","9",":",";","<","=",">","?","@","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","[","]","^","_","`","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","{","|","}","~"]
+  const mod = characters.length;
+</script>
+<button onclick="
+  let message = document.getElementById('Message').value;
+  let key = document.getElementById('Key').value;
+  let ret = '';
+  for (let i = 0; i < message.length; i++) {
+      const messageIndex = characters.indexOf(message[i]);
+      const keyIndex = characters.indexOf(key[i % key.length]);
+      const newIndex = (messageIndex + Math.pow(keyIndex, keyIndex) % mod) % mod;
+      ret += characters[newIndex];
+  }
+  document.getElementById('Output').value = ret;
+">Click me</button>
+<input type="Output" id="Output" name="Output">
