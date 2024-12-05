@@ -22,7 +22,7 @@ button {
     background-color: #fff;
     color: #000;
 }
-h1 {
+bigglow {
     background: #fff;
     color: #000;
     text-shadow:
@@ -31,7 +31,7 @@ h1 {
     font-size: 48px;
     text-align: center;
 }
-span {
+smallglow {
     background: #fff;
     color: #000;
     text-shadow:
