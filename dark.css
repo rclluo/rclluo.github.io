@@ -56,3 +56,4 @@ select {
 }
 img {
     filter: invert(1);
+    filter: contrast(100);
