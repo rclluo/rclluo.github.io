@@ -1,16 +1,32 @@
 <head>
-    <link id="pagestyle" rel="stylesheet" href="dark.css">
+    <link id="pagestyle" rel="stylesheet" href="dark.css" />
     <script>
-        var dark=true
+        var dark = true;
     </script>
-    <button onclick="
+    <button
+        onclick="
         if (dark) {
-            document.getElementById('pagestyle').setAttribute('href', 'light.css');
+            document.getElementById('pagestyle').setAttribute('href', '../light.css');
         } else {
-            document.getElementById('pagestyle').setAttribute('href', 'dark.css');
+            document.getElementById('pagestyle').setAttribute('href', '../dark.css');
         }
         dark=!dark
-    ">Change Theme</button>
+    "
+    >
+        Change Theme
+    </button>
+    <script>
+        MathJax = {
+            loader: { load: ["input/asciimath", "output/chtml"] },
+        };
+    </script>
+    <script
+        type="text/javascript"
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"
+    ></script>
+    <br>
 </head>
 <body>
     <div>
@@ -18,19 +34,18 @@
         <br>
     </div>
     <div>
-        <bigglow>Hello!</bigglow>
-        <br />
-        <smallglow>You can you this tool to encrypt text with a key!</smallglow>
+        <h1>Hello!</h1>
+        <br>
+        <span>You can you this tool to encrypt text with a key!</span>
     </div>
     <div>
-        <smallglow>Message:</smallglow>
-        <br />
+        <span>Message:</span>
         <textarea id="Message" name="Message" rows="10" cols="100"></textarea>
-        <br />
-        <smallglow>Key:</smallglow>
-        <br />
+        <br>
+        <span>Key:</span>
+        <br>
         <textarea id="Key" name="Key" rows="5" cols="100"></textarea>
-        <br />
+        <br>
     </div>
     <div>
         <script>
@@ -105,8 +120,8 @@
         </button>
     </div>
     <div>
-        <smallglow>Output:</smallglow>
-        <br />
+        <span>Output:</span>
+        <br>
         <textarea id="Output" name="Output" rows="10" cols="100"></textarea>
     </div>
 </body>

@@ -5,8 +5,8 @@ a {
     background: #fff;
     color: #000;
     text-shadow:
-            1px 1px 10px #444,
-            1px 1px 10px #777;
+        1px 1px 10px #444,
+        1px 1px 10px #777;
     font-size: 12px;
     text-align: center;
 }
@@ -22,21 +22,21 @@ button {
     background-color: #fff;
     color: #000;
 }
-bigglow {
+h1 {
     background: #fff;
     color: #000;
     text-shadow:
-            1px 1px 10px #444,
-            1px 1px 10px #777;
+        1px 1px 10px #444,
+        1px 1px 10px #777;
     font-size: 48px;
     text-align: center;
 }
-smallglow {
+span {
     background: #fff;
     color: #000;
     text-shadow:
-            1px 1px 10px #444,
-            1px 1px 10px #777;
+        1px 1px 10px #444,
+        1px 1px 10px #777;
     font-size: 12px;
     text-align: center;
 }
@@ -44,8 +44,13 @@ danger {
     background: #fff;
     color: #f00;
     text-shadow:
-            1px 1px 10px #b44,
-            1px 1px 10px #777;
+        1px 1px 10px #b44,
+        1px 1px 10px #777;
     font-size: 12px;
     text-align: center;
+}
+select {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
 }

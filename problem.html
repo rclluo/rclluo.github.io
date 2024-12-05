@@ -1,0 +1,75 @@
+<head>
+    <link id="pagestyle" rel="stylesheet" href="dark.css" />
+    <script>
+        var dark = true;
+    </script>
+    <button
+        onclick="
+        if (dark) {
+            document.getElementById('pagestyle').setAttribute('href', '../light.css');
+        } else {
+            document.getElementById('pagestyle').setAttribute('href', '../dark.css');
+        }
+        dark=!dark
+    "
+    >
+        Change Theme
+    </button>
+    <script>
+        MathJax = {
+            loader: { load: ["input/asciimath", "output/chtml"] },
+        };
+    </script>
+    <script
+        type="text/javascript"
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"
+    ></script>
+    <br />
+</head>
+<body>
+    <div>
+        <h1>Dirt Divison: Cowculus</h1>
+        <hr />
+        <br />
+    </div>
+    <div>
+        <h1>Problem Statement</h1>
+        <span>
+            Bessie the cow is taking calculus lessons at the Acowdemia! She is currently learning to compute derivatives and integrals of polynomials! Every day, she has `N` `(1\le N\le10^6)` homework problems. Because Bessie is
+        </span>
+        <select name="roast" id="roast">
+            <option value="stupid">stupid</option>
+            <option value="simple minded">simple minded</option>
+            <option value="slow">slow</option>
+            <option value="mentally challenged">
+                mentally challenged
+            </option>
+        </select
+        ><span>
+            , she needs your help with solving the homework problems.
+        </span>
+        <br>
+    </div>
+    <div>
+        <h1>Input</h1>
+        <span>
+            Your input consists of a single integer `N`, followed by the `N` problems
+        </span>
+        <br>
+        <span>
+            Each problem has two lines. The first line has a single integer: `K.` `K` is the degree of the polynomial.
+        </span>
+    </div>
+    <div>
+        <h1>Output</h1>
+        <span>
+            Your output will consist of `N` lines.
+        </span>
+        <br>
+        <span>
+            On each line, you will output a single integer `A,` the sum of the coefficients of the derivative for that problem.
+        </span>
+    </div>
+</body>
