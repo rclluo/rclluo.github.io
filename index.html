@@ -1,3 +1,21 @@
 <head>
-    <meta http-equiv="refresh" content="0; url=index/dark.html">
+    <link id="pagestyle" rel="stylesheet" href="dark.css">
+    <script>
+        var dark=true
+    </script>
+    <button onclick="
+        if (dark) {
+            document.getElementById('pagestyle').setAttribute('href', '../light.css');
+        } else {
+            document.getElementById('pagestyle').setAttribute('href', '../dark.css');
+        }
+        dark=!dark
+    ">Change Theme</button>
 </head>
+<body>
+    <div>
+        <a href="encrypt.html">Encryption/Decryption Tool</a>
+        <br>
+        <hr>
+    </div>
+</body>

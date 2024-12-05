@@ -1,42 +1,51 @@
 body {
-  background-color: #fff;
+    background-color: #fff;
 }
 a {
-  background: #fff;
-  color: #000;
-  text-shadow:
-      1px 1px 10px #444,
-      1px 1px 10px #777;
-  font-size: 12px;
-  text-align: center;
+    background: #fff;
+    color: #000;
+    text-shadow:
+            1px 1px 10px #444,
+            1px 1px 10px #777;
+    font-size: 12px;
+    text-align: center;
 }
 textarea {
-  background-color: #fff;
-  color: #000;
-  border-color: #000;
-  border-width: 1;
-  box-shadow: 5px 10px #777;
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+    border-width: 1;
+    box-shadow: 5px 10px #777;
 }
 button {
-  border-color: #000;
-  background-color: #fff;
-  color: #000;
+    border-color: #000;
+    background-color: #fff;
+    color: #000;
 }
 bigglow {
-  background: #fff;
-  color: #000;
-  text-shadow:
-      1px 1px 10px #444,
-      1px 1px 10px #777;
-  font-size: 48px;
-  text-align: center;
+    background: #fff;
+    color: #000;
+    text-shadow:
+            1px 1px 10px #444,
+            1px 1px 10px #777;
+    font-size: 48px;
+    text-align: center;
 }
 smallglow {
-  background: #fff;
-  color: #000;
-  text-shadow:
-      1px 1px 10px #444,
-      1px 1px 10px #777;
-  font-size: 12px;
-  text-align: center;
+    background: #fff;
+    color: #000;
+    text-shadow:
+            1px 1px 10px #444,
+            1px 1px 10px #777;
+    font-size: 12px;
+    text-align: center;
+}
+danger {
+    background: #fff;
+    color: #f00;
+    text-shadow:
+            1px 1px 10px #b44,
+            1px 1px 10px #777;
+    font-size: 12px;
+    text-align: center;
 }
