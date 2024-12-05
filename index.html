@@ -14,6 +14,12 @@
 </div>
 <div>
     <script>
+        function reverseString(str) {
+            var splitString = str.split("");
+            var reverseArray = splitString.reverse();
+            var joinArray = reverseArray.join("");
+            return joinArray;
+        }
         function gcd(a, b) {
             if (b === 0) {
                 return a;
@@ -47,7 +53,7 @@
             const newIndex = (messageIndex + (messageIndex * keyIndex) % mod) % mod;
             ret += characters[newIndex];
         }
-        message=ret
+        message=reverseString(ret);
     }
     document.getElementById('Output').value = message;
     ">Encrypt</button>
@@ -60,10 +66,11 @@
             const messageIndex = characters.indexOf(message[j]);
             const keyIndex = characters.indexOf(key[i % key.length]);
             const newIndex = (modInverse((1 + keyIndex) % mod, mod) * messageIndex) % mod;
-            console.log(newIndex)
+            console.log(newIndex);
             ret += characters[newIndex];
         }
-        message=ret
+        message=reverseString(ret);
+        console.log(message);
     }
     document.getElementById('Output').value = message;
     ">Decrypt</button>
