@@ -1,0 +1,103 @@
+<head>
+    <link rel="stylesheet" href="../dark.css">
+</head>
+<body>
+    <div>
+        <a href="light.html">Light Theme</a>
+        <br>
+        <a href="../index/dark.html">Home</a>
+        <hr>
+    </div>
+    <div>
+        <bigglow>Hello!</bigglow>
+        <br />
+        <smallglow>You can you this tool to encrypt text with a key!</smallglow>
+    </div>
+    <div>
+        <smallglow>Message:</smallglow>
+        <br />
+        <textarea id="Message" name="Message" rows="10" cols="100"></textarea>
+        <br />
+        <smallglow>Key:</smallglow>
+        <br />
+        <textarea id="Key" name="Key" rows="5" cols="100"></textarea>
+        <br />
+    </div>
+    <div>
+        <script>
+            function reverseString(str) {
+                var splitString = str.split("");
+                var reverseArray = splitString.reverse();
+                var joinArray = reverseArray.join("");
+                return joinArray;
+            }
+            function gcd(a, b) {
+                if (b === 0) {
+                    return a;
+                }
+                return gcd(b, a % b);
+            }
+            function modInverse(a, m) {
+                if (gcd(a, m) > 1) {
+                    return -1;
+                }
+                for (let x = 1; x < m; x++) {
+                    if (((a % m) * (x % m)) % m == 1) {
+                        return x;
+                    }
+                }
+            }
+            const str =
+                "`1234567890-=qwertyuiop[]asdfghjkl;zxcvbnm',./~!@#$%^&*()_+QWERTYUIOPASDFGHJKL:ZXCVBNM? \n";
+            const characters = str.split("");
+            const mod = characters.length;
+            var message = "";
+            var key = "";
+        </script>
+        <button
+            onclick="
+            message = document.getElementById('Message').value;
+            key = document.getElementById('Key').value;
+            for (let i = 0; i < key.length; i++) {
+                    let ret = '';
+                    for (let j = 0; j < message.length; j++) {
+                            const messageIndex = characters.indexOf(message[j]);
+                            const keyIndex = characters.indexOf(key[i % key.length]);
+                            const newIndex = (messageIndex + (messageIndex * keyIndex) % mod) % mod;
+                            ret += characters[newIndex];
+                    }
+                    message=reverseString(ret);
+            }
+            document.getElementById('Output').value = message;
+            "
+        >
+            Encrypt
+        </button>
+        <button
+            onclick="
+            message = document.getElementById('Message').value;
+            key = document.getElementById('Key').value;
+            for (let i = 0; i < key.length; i++) {
+                    let ret = '';
+                    for (let j = 0; j < message.length; j++) {
+                            const messageIndex = characters.indexOf(message[j]);
+                            const keyIndex = characters.indexOf(key[i % key.length]);
+                            const newIndex = (modInverse((1 + keyIndex) % mod, mod) * messageIndex) % mod;
+                            console.log(newIndex);
+                            ret += characters[newIndex];
+                    }
+                    message=reverseString(ret);
+                    console.log(message);
+            }
+            document.getElementById('Output').value = message;
+            "
+        >
+            Decrypt
+        </button>
+    </div>
+    <div>
+        <smallglow>Output:</smallglow>
+        <br />
+        <textarea id="Output" name="Output" rows="10" cols="100"></textarea>
+    </div>
+</body>
