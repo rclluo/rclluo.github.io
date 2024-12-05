@@ -54,3 +54,5 @@ select {
     color: #0f0;
     border-color: #0f0;
 }
+img {
+    filter: invert(1);
