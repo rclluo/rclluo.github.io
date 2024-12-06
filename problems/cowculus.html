@@ -3,32 +3,57 @@
     <script>
         var dark = true;
     </script>
-    <button
-        onclick="
+    <button onclick="
         if (dark) {
             document.getElementById('pagestyle').setAttribute('href', '../light.css');
         } else {
             document.getElementById('pagestyle').setAttribute('href', '../dark.css');
         }
         dark=!dark
-    "
-    >
+    ">
         Change Theme
     </button>
     <script>
         MathJax = {
-            loader: { load: ["input/asciimath", "output/chtml"] },
+            loader: {load: ["input/asciimath", "output/chtml"]},
         };
     </script>
-    <script
-        type="text/javascript"
-        id="MathJax-script"
-        async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"
-    ></script>
-    <br />
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"></script>
+    <script>
+        const hash = "4e221dd923f82";
+        const cyrb53 = (str, seed = 0) => {
+            let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+            for (let i = 0, ch; i < str.length; i++) {
+                ch = str.charCodeAt(i);
+                h1 = Math.imul(h1 ^ ch, 2654435761);
+                h2 = Math.imul(h2 ^ ch, 1597334677);
+            }
+            h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+            h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+            h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+            h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+
+            return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16);
+        };
+    </script>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const password = urlParams.get('password');
+        if (password == null) {
+            window.location.href = '../index.html';
+        }
+        if (cyrb53(password) != hash) {
+            window.location.href = '../index.html';
+        }
+    </script>
+    <br>
 </head>
+
 <body>
+    <script>
+    </script>
     <div>
         <a href="../moosaco.html">Back to Moosaco</a>
         <br>
@@ -42,7 +67,8 @@
         <bigglow>Problem Statement</bigglow>
         <br>
         <smallglow>
-            Bessie the cow is taking calculus lessons at the Acowdemia! She is currently learning to compute derivatives and integrals of polynomials! Every day, she has `N` `(1\le N\le10^6)` homework problems. Because Bessie is
+            Bessie the cow is taking calculus lessons at the Acowdemia! She is currently learning to compute derivatives
+            and integrals of polynomials! Every day, she has `N` `(1\le N\le10^6)` homework problems. Because Bessie is
         </smallglow>
         <select name="roast" id="roast">
             <option value="stupid">stupid</option>
@@ -51,8 +77,8 @@
             <option value="mentally challenged">
                 mentally challenged
             </option>
-        </select
-        ><smallglow>
+        </select>
+        <smallglow>
             , she needs your help with solving the homework problems.
         </smallglow>
         <br>
@@ -76,7 +102,8 @@
         </smallglow>
         <br>
         <smallglow>
-            On each line, you will output a single integer `A,` the sum of the coefficients of the derivative for that problem.
+            On each line, you will output a single integer `A,` the sum of the coefficients of the derivative for that
+            problem.
         </smallglow>
     </div>
 </body>

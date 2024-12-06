@@ -3,41 +3,51 @@
     <script>
         var dark = true;
     </script>
-    <button
-        onclick="
+    <button onclick="
         if (dark) {
             document.getElementById('pagestyle').setAttribute('href', 'light.css');
         } else {
             document.getElementById('pagestyle').setAttribute('href', 'dark.css');
         }
         dark=!dark
-    "
-    >
+    ">
         Change Theme
     </button>
     <script>
         MathJax = {
-            loader: { load: ["input/asciimath", "output/chtml"] },
+            loader: {load: ["input/asciimath", "output/chtml"]},
         };
     </script>
-    <script
-        type="text/javascript"
-        id="MathJax-script"
-        async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"
-    ></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"></script>
     <br>
 </head>
+
 <body>
     <div>
         <img src=moosaco_logo.png>
         <hr>
-        <smallglow>Welcome to the top </smallglow><danger>SECRET</danger><smallglow> online headquarters of MOOSACO!</smallglow>
+        <smallglow>Welcome to the top </smallglow>
+        <danger>SECRET</danger>
+        <smallglow> online headquarters of MOOSACO!</smallglow>
         <br>
-        <smallglow>ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED THROUGH </smallglow><danger>BERRYMAN-LANGFORD MEMETIC KILL AGENT</danger><smallglow>. SCROLLING DOWN WITHOUT PROPER MEMETIC INOCULATION WILL RESULT IN IMMEDIATE </smallglow><danger>CARDIAC ARREST FOLLOWED BY DEATH</danger><smallglow>.</smallglow>
+        <smallglow>ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED THROUGH </smallglow>
+        <danger>BERRYMAN-LANGFORD MEMETIC KILL AGENT</danger>
+        <smallglow>. SCROLLING DOWN WITHOUT PROPER MEMETIC INOCULATION WILL RESULT IN IMMEDIATE </smallglow>
+        <danger>CARDIAC ARREST FOLLOWED BY DEATH</danger>
+        <smallglow>.</smallglow>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
     <div>
-        <a href="problems/cowculus.html">Cowculus</a>
+        <a href="problems/cowculus.html" id="link" name="link">Cowculus</a>
+        <script>
+            function changeParameters() {
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const password = urlParams.get('password');
+                document.getElementById("link").href += "?password=" + password;
+            }
+            window.onload = changeParameters
+        </script>
     </div>
 </body>
