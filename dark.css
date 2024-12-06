@@ -57,3 +57,5 @@ select {
 img {
     filter: invert(1);
     filter: contrast(100);
+    filter: brightness(3);
+}
