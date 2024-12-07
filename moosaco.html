@@ -42,13 +42,16 @@
         <a href="problems/cowculus.html" id="cowculus" name="cowculus">Dirt: Cowculus</a>
         <br>
         <a href="problems/nuke.html" id="nuke" name="nuke">Titanium: Nuking the Farm</a>
+        <br>
+        <a href="problems/arson.html" id="arson" name="arson">Titanium: Arson</a>
         <script>
             function changeParameters() {
                 const queryString = window.location.search;
                 const urlParams = new URLSearchParams(queryString);
                 const password = urlParams.get('password');
-                    document.getElementById("cowculus").href += "?password=" + password;
+                document.getElementById("cowculus").href += "?password=" + password;
                 document.getElementById("nuke").href += "?password=" + password;
+                document.getElementById("arson").href += "?password=" + password;
             }
             window.onload = changeParameters
         </script>
