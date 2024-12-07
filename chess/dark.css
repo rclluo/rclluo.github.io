@@ -41,7 +41,7 @@ h1{
 
 button{
     color: #fff;
-    background-color: #000;
+    background-color: #333;
     border: none;
     width: 120px;
     height: 40px;
@@ -52,7 +52,7 @@ button{
 }
 
 button:hover{
-    background-color: #434343;
+    background-color: #080;
 }
 
 .move-history{
