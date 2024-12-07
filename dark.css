@@ -26,7 +26,8 @@ button {
     color: #000;
 }
 button:hover {
-    background-color: #040;
+    background-color: #080;
+    color: #fff
 }
 bigglow {
     background: #000;
