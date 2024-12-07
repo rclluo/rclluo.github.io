@@ -89,7 +89,7 @@
                             const messageIndex = characters.indexOf(message[j]) + 1;
                             const keyIndex = characters.indexOf(key[i % key.length]) + 1;
                             const newIndex = (messageIndex * keyIndex) % mod;
-                            ret += characters[newIndex-1];
+                            ret += characters[newIndex - 1];
                     }
                     message=reverseString(ret);
             }
