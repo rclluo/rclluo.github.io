@@ -53,6 +53,7 @@ button{
 
 button:hover{
     background-color: #080;
+    color: #0f0
 }
 
 .move-history{
