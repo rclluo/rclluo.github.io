@@ -1,6 +1,9 @@
 body {
     background-color: #fff;
 }
+code {
+    color: #000;
+}
 a {
     background: #fff;
     color: #000;

@@ -21,12 +21,12 @@
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"></script>
     <br>
+    <img src="moosaco_logo.png">
+    <hr>
 </head>
 
 <body>
     <div>
-        <img src=moosaco_logo.png>
-        <hr>
         <smallglow>Welcome to the top </smallglow>
         <danger>SECRET</danger>
         <smallglow> online headquarters of MOOSACO!</smallglow>
@@ -39,13 +39,16 @@
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
     <div>
-        <a href="problems/cowculus.html" id="link" name="link">Cowculus</a>
+        <a href="problems/cowculus.html" id="cowculus" name="cowculus">Cowculus</a>
+        <br>
+        <a href="problems/nuke.html" id="nuke" name="nuke">Nuking the Farm</a>
         <script>
             function changeParameters() {
                 const queryString = window.location.search;
                 const urlParams = new URLSearchParams(queryString);
                 const password = urlParams.get('password');
-                document.getElementById("link").href += "?password=" + password;
+                    document.getElementById("cowculus").href += "?password=" + password;
+                document.getElementById("nuke").href += "?password=" + password;
             }
             window.onload = changeParameters
         </script>

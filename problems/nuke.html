@@ -60,7 +60,11 @@
 
 <body>
     <div>
-        <bigglow>Dirt Divison: Cowculus</bigglow>
+        <a href="../moosaco.html">Back to Moosaco</a>
+        <br>
+    </div>
+    <div>
+        <bigglow>Titanium Divison: Nuking the Farm</bigglow>
         <hr />
         <br />
     </div>
@@ -68,43 +72,36 @@
         <bigglow>Problem Statement</bigglow>
         <br>
         <smallglow>
-            Bessie the cow is taking calculus lessons at the Acowdemia! She is currently learning to compute derivatives
-            and integrals of polynomials! Every day, she has `N` `(1\le N\le10^6)` homework problems. Because Bessie is
-        </smallglow>
-        <select name="roast" id="roast">
-            <option value="stupid">stupid</option>
-            <option value="simple minded">simple minded</option>
-            <option value="slow">slow</option>
-            <option value="mentally challenged">
-                mentally challenged
-            </option>
-        </select>
-        <smallglow>
-            , she needs your help with solving the homework problems.
+            Bessie the cow is invading the neighboring farm, which can be represented as a `N\times M` grid! At the nuke store, there are `K` types of nukes, and the `i`th nuke has a power of `p_i` and a cost of `c_i.` This means that its blast radius will be `p_i.`
         </smallglow>
         <br>
+        <smallglow>
+            For example, a explosion with blast radius of 2 will damage the area shown below:
+        </smallglow>
+        <br>
+        <code>
+            **#** <br>
+            *###* <br>
+            ##### <br>
+            *###* <br>
+            **#** <br>
+        </code>
+        <smallglow>Bessie wants to nuke the entire farm, so that Farmer Nhoj will be unable to escape. Help Bessie find the minimum cost to nuke the entire farm. 
+        </smallglow>
+        <danger>
+            (One type of nuke can be purchased multiple times.)
+        </danger>
     </div>
     <div>
         <bigglow>Input</bigglow>
         <br>
-        <smallglow>
-            Your input consists of a single integer `N`, followed by the `N` problems
-        </smallglow>
-        <br>
-        <smallglow>
-            Each problem has two lines. The first line has a single integer: `K.` `K` is the degree of the polynomial.
+        <smallglow>The first line of input will contain three integers: `N`, `M`, and `K.` <br>
+            The next `K` lines will contain numbers `p_i` and `c_i`, the power and cost of each nuke, respectively.
         </smallglow>
     </div>
     <div>
         <bigglow>Output</bigglow>
         <br>
-        <smallglow>
-            Your output will consist of `N` lines.
-        </smallglow>
-        <br>
-        <smallglow>
-            On each line, you will output a single integer `A,` the sum of the coefficients of the derivative for that
-            problem.
-        </smallglow>
+        <smallglow>Your output will consist on one integer: the least cost of the nukes that Bessie needs to nuke the entire farm.</smallglow>
     </div>
 </body>
