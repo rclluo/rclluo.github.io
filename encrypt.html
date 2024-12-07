@@ -86,9 +86,9 @@
             for (let i = 0; i < key.length; i++) {
                     let ret = '';
                     for (let j = 0; j < message.length; j++) {
-                            const messageIndex = characters.indexOf(message[j]);
+                            const messageIndex = characters.indexOf(message[j]) + 1;
                             const keyIndex = characters.indexOf(key[i % key.length]) + 1;
-                            const newIndex = (messageIndex + (messageIndex * keyIndex) % mod) % mod;
+                            const newIndex = (messageIndex * keyIndex) % mod;
                             ret += characters[newIndex];
                     }
                     message=reverseString(ret);
@@ -105,9 +105,9 @@
             for (let i = 0; i < key.length; i++) {
                     let ret = '';
                     for (let j = 0; j < message.length; j++) {
-                            const messageIndex = characters.indexOf(message[j]);
-                            const keyIndex = characters.indexOf(key[i % key.length]);
-                            const newIndex = (modInverse((1 + keyIndex) % mod, mod) * messageIndex) % mod;
+                            const messageIndex = characters.indexOf(message[j]) + 1;
+                            const keyIndex = characters.indexOf(key[i % key.length]) +1;
+                            const newIndex = (modInverse(keyIndex, mod) * messageIndex) % mod;
                             console.log(newIndex);
                             ret += characters[newIndex - 1];
                     }
