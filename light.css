@@ -57,6 +57,7 @@ danger {
     text-align: center;
 }
 select {
+    -webkit-appearance: none;
     background-color: #fff;
     color: #000;
     border-color: #000;
