@@ -1,0 +1,134 @@
+<head>
+    <link id="pagestyle" rel="stylesheet" href="../dark.css" />
+    <script>
+        var dark = true;
+    </script>
+    <button onclick="
+        if (dark) {
+            document.getElementById('pagestyle').setAttribute('href', '../light.css');
+        } else {
+            document.getElementById('pagestyle').setAttribute('href', '../dark.css');
+        }
+        dark=!dark
+    ">
+        Change Theme
+    </button>
+    <br>
+    <img src="../moosaco_logo.png">
+    <br>
+    <a href="../moosaco.html" id = "back" name="back">Back to Moosaco</a>
+    <hr>
+    <script>
+        MathJax = {
+            loader: {load: ["input/asciimath", "output/chtml"]},
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"></script>
+    <script>
+        const hash = "4e221dd923f82";
+        const cyrb53 = (str, seed = 0) => {
+            let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+            for (let i = 0, ch; i < str.length; i++) {
+                ch = str.charCodeAt(i);
+                h1 = Math.imul(h1 ^ ch, 2654435761);
+                h2 = Math.imul(h2 ^ ch, 1597334677);
+            }
+            h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+            h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+            h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+            h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+
+            return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16);
+        };
+    </script>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const password = urlParams.get('password');
+        if (password == null) {
+            window.location.href = '../index.html';
+        }
+        if (cyrb53(password) != hash) {
+            window.location.href = '../index.html';
+        }
+        window.onload = function () {
+            document.getElementById('back').href += "?password=" + password;
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <bigglow>Titanium Divison: Nuking the Farm</bigglow>
+        <hr>
+        <br>
+    </div>
+    <div>
+        <bigglow>Problem Statement</bigglow>
+        <br>
+        <smallglow>
+            Bessie the cow is invading the neighboring farm, which can be represented as a `N\times M` grid! Last time, the nukes she used failed to detonate, so she is now resorting to arson!
+        </smallglow>
+        <br>
+        <smallglow>
+            After Bessie sets the fires, `K` time will pass before Farmer Nhoj wakes up and puts out the fire. Bessie wants to burn down the entire farm within `K` units of time.
+        </smallglow>
+        <br>
+        <smallglow>
+            She has two types of fires: slow fire and fast fire.
+        </smallglow>
+        <br>
+        <smallglow>
+            A single square of fast fire will turn into
+        </smallglow>
+        <br>
+        <code>
+            **#** <br>
+            *###* <br>
+            ##### <br>
+            *###* <br>
+            **#** <br>
+        </code>
+        <smallglow>
+            in one unit of time, where # represents burned area
+        </smallglow>
+        <br>
+        <smallglow>
+            A single square of fast fire will turn into
+        </smallglow>
+        <br>
+        <code>
+            ***** <br>
+            **#** <br>
+            *###* <br>
+            **#** <br>
+            ***** <br>
+        </code>
+        <smallglow>
+            in one unit of time.
+        </smallglow>
+        <br>
+        <smallglow>
+            Setting one square of fast fire takes two Moonies, and setting a square of slow fire takes one Moony.
+        </smallglow>
+        <br>
+        <smallglow>
+            Find the least cost it will take for Bessie to burn down the farm!
+        </smallglow>
+    </div>
+    <div>
+        <bigglow>Input</bigglow>
+        <br>
+        <smallglow>
+            Input will consist of one line containing `N,` `M,` and `K.`
+        </smallglow>
+    </div>
+    <div>
+        <bigglow>Output</bigglow>
+        <br>
+        <smallglow>
+            Your output will consist on one integer: the least cost of the fires that Bessie needs light to burn down the entire farm.
+        </smallglow>
+    </div>
+</body>
