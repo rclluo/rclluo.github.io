@@ -40,7 +40,7 @@ h1{
 }
 
 button{
-    color: #fff;
+    color: #aaa;
     background-color: #000;
     border: none;
     width: 120px;
@@ -52,7 +52,7 @@ button{
 }
 
 button:hover{
-    background-color: #434343;
+    background-color: #007;
     color: #fff
 }
 
