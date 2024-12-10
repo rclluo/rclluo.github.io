@@ -1,13 +1,13 @@
 <head>
-    <link id="pagestyle" rel="stylesheet" href="..../dark.css" />
+    <link id="pagestyle" rel="stylesheet" href="../../dark.css" />
     <script>
         var dark = true;
     </script>
     <button onclick="
         if (dark) {
-            document.getElementById('pagestyle').setAttribute('href', '..../light.css');
+            document.getElementById('pagestyle').setAttribute('href', '../../light.css');
         } else {
-            document.getElementById('pagestyle').setAttribute('href', '..../dark.css');
+            document.getElementById('pagestyle').setAttribute('href', '../../dark.css');
         }
         dark=!dark
     ">
@@ -47,10 +47,10 @@
         const urlParams = new URLSearchParams(queryString);
         const password = urlParams.get('password');
         if (password == null) {
-            window.location.href = '../index.html';
+            window.location.href = '../../index.html';
         }
         if (cyrb53(password) != hash) {
-            window.location.href = '../index.html';
+            window.location.href = '../../index.html';
         }
         window.onload = function () {
             document.getElementById('back').href += "?password=" + password;
