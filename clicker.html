@@ -1,23 +1,53 @@
-<style>
-    @keyframes getSmaller {
-        0% {
-            transform: scale(1);
+<head>
+    <link id="pagestyle" rel="stylesheet" href="dark.css" />
+    <script>
+        var dark = true;
+    </script>
+    <button
+        onclick="
+        if (dark) {
+            document.getElementById('pagestyle').setAttribute('href', 'light.css');
+        } else {
+            document.getElementById('pagestyle').setAttribute('href', 'dark.css');
         }
-        33% {
-            transform: scale(1.05);
+        dark=!dark
+    "
+    >
+        Change Theme
+    </button>
+    <script>
+        MathJax = {
+            loader: { load: ["input/asciimath", "output/chtml"] },
+        };
+    </script>
+    <script
+        type="text/javascript"
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"
+    ></script>
+    <br>
+    <style>
+        @keyframes getSmaller {
+            0% {
+                transform: scale(1);
+            }
+            33% {
+                transform: scale(1.05);
+            }
+            66% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
-        66% {
-            transform: scale(0.95);
+        .class {
+            width: 200px;
+            height: 200px;
         }
-        100% {
-            transform: scale(1);
-        }
-    }
-    .class {
-        width: 200px;
-        height: 200px;
-    }
-</style>
+    </style>
+</head>
 <body>
     <h1 id="score">0</h1>
     <script>
