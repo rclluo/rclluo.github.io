@@ -1,0 +1,40 @@
+<style>
+    @keyframes getSmaller {
+        0% {
+            transform: scale(1);
+        }
+        33% {
+            transform: scale(1.05);
+        }
+        66% {
+            transform: scale(0.95);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    .class {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+    <h1 id="score">0</h1>
+    <script>
+        let score = 0
+        let clickActive = false
+    </script>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rotating_earth_animated_transparent.gif" class="class" alt="World" onclick="  
+        score = score + 1
+        document.getElementById('score').innerHTML = score
+        if (!clickActive) {
+            clickActive = true;
+            this.style.animation = 'getSmaller '+150+'ms';
+            setTimeout(()=>{
+                this.style.animation = '';
+                clickActive = false;
+                console.log('deactivated')
+            }, 150);
+        }
+    ">
+</body>
