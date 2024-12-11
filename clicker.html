@@ -71,7 +71,7 @@
         function setCookie(cname, value) {
             document.cookie = cname + '=' + value + ';';
         }
-        if (getCookie('score') == null) {
+        if (isNaN(getCookie('score'))) {
             let score = 0;
         } else {
             let score = parseInt(getCookie('score'));
