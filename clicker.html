@@ -57,7 +57,8 @@
             var atoms = parseInt(getCookie('atoms'));
         }
         setInterval(function () {
-            setCookie('score',score)
+            setCookie('score',score);
+            setCookie('atoms',atoms);
         }, 5000);
         setInterval(function () {
             document.getElementById('score').innerHTML = score;
