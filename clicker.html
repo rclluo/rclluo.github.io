@@ -53,9 +53,33 @@
     <bigglow id="score">0</bigglow><smallglow>Energy</smallglow>
     <br>
     <script>
-        setInterval(function () {document.cookie = "score="+score;}, 1000);
-        let score = 0
-        let clickActive = false
+        function getCookie(cname) {
+            var name = cname + '=';
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return '';
+        }
+        function setCookie(cname, value) {
+            document.cookie = cname + '=' + value + ';';
+        }
+        if (getCookie('score') == null) {
+            let score = 0;
+        } else {
+            let score = parseInt(getCookie('score'));
+        }
+        setInterval(function () {
+            setCookie('score',score)
+        }, 1000);
+        let clickActive = false;
     </script>
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rotating_earth_animated_transparent.gif" class="class" alt="World" onclick="  
         score = score + 1
@@ -66,7 +90,6 @@
             setTimeout(()=>{
                 this.style.animation = '';
                 clickActive = false;
-                console.log('deactivated')
             }, 150);
         }
     ">
