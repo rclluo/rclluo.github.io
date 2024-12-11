@@ -53,6 +53,7 @@
     <bigglow id="score">0</bigglow><smallglow>Energy</smallglow>
     <br>
     <script>
+        setInterval(function () {document.cookie = "score="+score;}, 1000);
         let score = 0
         let clickActive = false
     </script>
