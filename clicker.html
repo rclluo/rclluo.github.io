@@ -46,12 +46,12 @@
         function setCookie(cname, value) {
             document.cookie = cname + '=' + value + ';';
         }
-        if (isNaN(getCookie('score'))) {
+        if (isNaN(getCookie('score')) || getCookie('score')=='') {
             var score = 0;
         } else {
             var score = parseInt(getCookie('score'));
         }
-        if (isNaN(getCookie('atoms'))) {
+        if (isNaN(getCookie('atoms')) || getCookie('score')=='') {
             var atoms = 0;
         } else {
             var atoms = parseInt(getCookie('atoms'));
