@@ -51,12 +51,20 @@
         } else {
             var score = parseInt(getCookie('score'));
         }
+        if (isNaN(getCookie('atoms'))) {
+            var atoms = 0;
+        } else {
+            var atoms = parseInt(getCookie('atoms'));
+        }
         setInterval(function () {
             setCookie('score',score)
         }, 5000);
         setInterval(function () {
             document.getElementById('score').innerHTML = score;
         }, 100)
+        setInterval(function () {
+            score = score + atoms;
+        }, 5000)
         let clickActive = false;
     </script>
     <img src="https://media0.giphy.com/media/l5JbspfwZ0yjHjlJ0K/giphy.gif?cid=6c09b952kz543h1610f03nynl918hf6w4luwstdtg8zzr0h6" alt="World" onclick="  
