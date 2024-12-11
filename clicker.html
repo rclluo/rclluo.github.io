@@ -78,12 +78,14 @@
         }
         setInterval(function () {
             setCookie('score',score)
-        }, 1000);
+        }, 5000);
+        setInterval(function () {
+            document.getElementById('score').innerHTML = score;
+        }, 100)
         let clickActive = false;
     </script>
     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rotating_earth_animated_transparent.gif" class="class" alt="World" onclick="  
         score = score + 1;
-        document.getElementById('score').innerHTML = score;
         if (!clickActive) {
             clickActive = true;
             this.style.animation = 'getSmaller '+150+'ms';
