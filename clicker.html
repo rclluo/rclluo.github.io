@@ -1,7 +1,7 @@
 <head>
     <link id="pagestyle" rel="stylesheet" href="dark.css" />
     <style>
-        @keyframes getSmaller {
+        @keyframes flash {
             0% {
                 filter: brightness(1);
             }
@@ -16,6 +16,23 @@
             }
             100% {
                 filter: brightness(1);
+            }
+        }
+        @keyframes bounce {
+            0% {
+                transform: size(1)
+            }
+            33% {
+                transform: size(1.05)
+            }
+            50% {
+                transform: size(1)
+            }
+            66% {
+                transform: size(0.95)
+            }
+            100% {
+                transform: size(1)
             }
         }
         img {
@@ -65,18 +82,19 @@
         }, 5000);
         setInterval(function () {
             document.getElementById('score').innerHTML = score;
-            document.getElementById('atoms-cost').innerHTML = 10 * 1.15 ^ atoms;
+            document.getElementById('atoms-cost').innerHTML = 10 * 1.15 ** atoms;
         }, 100)
         setInterval(function () {
             score = score + atoms;
         }, 5000)
         let clickActive = false;
+        let atomClickActive = false;
     </script>
     <img src="https://media0.giphy.com/media/l5JbspfwZ0yjHjlJ0K/giphy.gif?cid=6c09b952kz543h1610f03nynl918hf6w4luwstdtg8zzr0h6" alt="World" onclick="  
         score = score + 1;
         if (!clickActive) {
             clickActive = true;
-            this.style.animation = 'getSmaller '+150+'ms';
+            this.style.animation = 'flash '+150+'ms';
             setTimeout(()=>{
                 this.style.animation = '';
                 clickActive = false;
@@ -86,5 +104,13 @@
     <br>
     <img src="atom.gif" class="upgrade" alt="Atom" onclick="
         atoms = atoms + 1;
+        if (!atomClickActive) {
+            atomClickActive = true;
+            this.style.animation = 'flash '+150+'ms';
+            setTimeout(()=>{
+                this.style.animation = '';
+                atomClickActive = false;
+            }, 150);
+        }
     "><bigglow>Atom        Cost: </bigglow><bigdanger id="atoms-cost">Loading...</bigdanger>
 </body>
