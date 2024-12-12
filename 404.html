@@ -1,0 +1,35 @@
+<head>
+    <link id="pagestyle" rel="stylesheet" href="dark.css" />
+    <script>
+        var dark = true;
+    </script>
+    <button
+        onclick="
+        if (dark) {
+            document.getElementById('pagestyle').setAttribute('href', 'light.css');
+        } else {
+            document.getElementById('pagestyle').setAttribute('href', 'dark.css');
+        }
+        dark=!dark
+    "
+    >
+        Change Theme
+    </button>
+    <script>
+        MathJax = {
+            loader: { load: ["input/asciimath", "output/chtml"] },
+        };
+    </script>
+    <script
+        type="text/javascript"
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js"
+    ></script>
+    <br>
+</head>
+<body>
+    <div>
+        <bigglow>Idiot.</bigglow>
+    </div>
+</body>
