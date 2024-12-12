@@ -103,8 +103,8 @@
     ">
     <br>
     <img src="atom.gif" class="upgrade" alt="Atom" onclick="
-        if (score >= parseInt(document.getElementById('atom-cost'))) {
-            score = score - parseInt(document.getElementById('atom-cost'));
+        if (score >= parseInt(document.getElementById('atom-cost').innerHTML)) {
+            score = score - parseInt(document.getElementById('atom-cost').innerHTML);
             atoms = atoms + 1;
         }
         if (!atomClickActive) {
