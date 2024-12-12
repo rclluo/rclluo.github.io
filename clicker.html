@@ -22,8 +22,8 @@
             filter: invert(0);
         }
         .upgrade {
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
         }
     </style>
 </head>
@@ -65,6 +65,7 @@
         }, 5000);
         setInterval(function () {
             document.getElementById('score').innerHTML = score;
+            document.getElementById('atoms-cost').innerHTML = 10 * 1.15 ^ atoms;
         }, 100)
         setInterval(function () {
             score = score + atoms;
@@ -85,5 +86,5 @@
     <br>
     <img src="atom.gif" class="upgrade" alt="Atom" onclick="
         atoms = atoms + 1;
-    ">
+    "><bigglow>Atom        Cost: </bigglow><bigdanger id="atoms-cost">Loading...</bigdanger>
 </body>
