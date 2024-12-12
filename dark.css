@@ -56,6 +56,15 @@ danger {
     font-size: 12px;
     text-align: center;
 }
+bigdanger {
+    background: #000;
+    color: #f00;
+    text-shadow:
+        1px 1px 10px #b44,
+        1px 1px 10px #777;
+    font-size: 48px;
+    text-align: center;
+}
 select {
     -webkit-appearance: none;
     background-color: #000;
