@@ -82,7 +82,7 @@
         }, 5000);
         setInterval(function () {
             document.getElementById('score').innerHTML = score;
-            document.getElementById('atoms-cost').innerHTML = 10 * 1.15 ** atoms;
+            document.getElementById('atoms-cost').innerHTML = Math.floor(10 * 1.15 ** atoms);
         }, 100)
         setInterval(function () {
             score = score + atoms;
@@ -106,7 +106,7 @@
         atoms = atoms + 1;
         if (!atomClickActive) {
             atomClickActive = true;
-            this.style.animation = 'flash '+150+'ms';
+            this.style.animation = 'bounce '+150+'ms';
             setTimeout(()=>{
                 this.style.animation = '';
                 atomClickActive = false;
