@@ -97,9 +97,9 @@
         }, 100)
         setInterval(function () {
             score = score + atoms;
-            document.getElementByID('atom-button').style.animation = 'activate '+200+'ms';
+            document.getElementById('atom-button').style.animation = 'activate '+200+'ms';
             setTimeout(()=>{
-                document.getElementByID('atom-button').style.animation = '';
+                document.getElementById('atom-button').style.animation = '';
             }, 150);
         }, 5000)
         let clickActive = false;
