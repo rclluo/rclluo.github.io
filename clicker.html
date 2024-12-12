@@ -20,19 +20,19 @@
         }
         @keyframes bounce {
             0% {
-                transform: size(1)
+                transform: scale(1)
             }
             33% {
-                transform: size(1.05)
+                transform: scale(1.1)
             }
             50% {
-                transform: size(1)
+                transform: scale(1)
             }
             66% {
-                transform: size(0.95)
+                transform: scale(0.9)
             }
             100% {
-                transform: size(1)
+                transform: scale(1)
             }
         }
         img {
@@ -103,8 +103,8 @@
     ">
     <br>
     <img src="atom.gif" class="upgrade" alt="Atom" onclick="
-        if (score >= parseInt(document.getElementById('atoms-cost'))) {
-            score = score - parseInt(document.getElementById('atoms-cost'));
+        if (score >= parseInt(document.getElementById('atom-cost'))) {
+            score = score - parseInt(document.getElementById('atom-cost'));
             atoms = atoms + 1;
         }
         if (!atomClickActive) {
@@ -115,5 +115,5 @@
                 atomClickActive = false;
             }, 150);
         }
-    "><bigglow>Atom        Cost: </bigglow><bigdanger id="atoms-cost">Loading...</bigdanger>
+    "><bigglow>Atom        Cost: </bigglow><bigdanger id="atom-cost">Loading...</bigdanger>
 </body>
