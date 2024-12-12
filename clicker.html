@@ -103,7 +103,10 @@
     ">
     <br>
     <img src="atom.gif" class="upgrade" alt="Atom" onclick="
-        atoms = atoms + 1;
+        if (score >= parseInt(document.getElementById('atoms-cost'))) {
+            score = score - parseInt(document.getElementById('atoms-cost'));
+            atoms = atoms + 1;
+        }
         if (!atomClickActive) {
             atomClickActive = true;
             this.style.animation = 'bounce '+150+'ms';
