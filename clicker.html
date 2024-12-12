@@ -35,6 +35,17 @@
                 transform: scale(1)
             }
         }
+        @keyframes activate {
+            0% {
+                filter: invert(0);
+            }
+            50% {
+                filter: invert(1);
+            }
+            100% {
+                filter: invert(0);
+            }
+        }
         img {
             filter: invert(0);
         }
@@ -86,6 +97,10 @@
         }, 100)
         setInterval(function () {
             score = score + atoms;
+            document.getElementByID('atom-button').style.animation = 'activate '+200+'ms';
+            setTimeout(()=>{
+                document.getElementByID('atom-button').style.animation = '';
+            }, 150);
         }, 5000)
         let clickActive = false;
         let atomClickActive = false;
@@ -102,7 +117,7 @@
         }
     ">
     <br>
-    <img src="atom.gif" class="upgrade" alt="Atom" onclick="
+    <img src="atom.gif" class="upgrade" alt="Atom" id="atom-button" onclick="
         if (score >= parseInt(document.getElementById('atom-cost').innerHTML)) {
             score = score - parseInt(document.getElementById('atom-cost').innerHTML);
             atoms = atoms + 1;
