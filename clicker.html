@@ -87,13 +87,20 @@
         } else {
             var atoms = parseInt(getCookie('atoms'));
         }
+        if (isNaN(getCookie('molecules')) || getCookie('molecules')=='') {
+            var molecules = 0;
+        } else {
+            var molecules = parseInt(getCookie('molecules'));
+        }
         setInterval(function () {
             setCookie('score',score);
             setCookie('atoms',atoms);
+            setCookie('molecules',molecules);
         }, 5000);
         setInterval(function () {
             document.getElementById('score').innerHTML = score;
             document.getElementById('atom-cost').innerHTML = Math.floor(10 * 1.15 ** atoms);
+            document.getElementById('molecule-cost').innerHTML = Math.floor(100 * 1.15 ** atoms);
         }, 100)
         setInterval(function () {
             score = score + atoms;
@@ -102,6 +109,13 @@
                 document.getElementById('atom-button').style.animation = '';
             }, 1000);
         }, 5000)
+        setInterval(function () {
+            score = score + 5 * molecules;
+            document.getElementById('molecule-button').style.animation = 'activate '+700+'ms';
+            setTimeout(()=>{
+                document.getElementById('molecule-button').style.animation = '';
+            }, 700);
+        }, 2000)
         let clickActive = false;
         let atomClickActive = false;
     </script>
@@ -131,4 +145,18 @@
             }, 150);
         }
     "><bigglow>Atom        Cost: </bigglow><bigdanger id="atom-cost">Loading...</bigdanger>
+    <img src="molecule.gif" class="upgrade" alt="Molecule" id="molecule-button" onclick="
+    if (score >= parseInt(document.getElementById('molecule-cost').innerHTML)) {
+        score = score - parseInt(document.getElementById('molecule-cost').innerHTML);
+        atoms = atoms + 1;
+    }
+    if (!atomClickActive) {
+        atomClickActive = true;
+        this.style.animation = 'bounce '+150+'ms';
+        setTimeout(()=>{
+            this.style.animation = '';
+            atomClickActive = false;
+        }, 150);
+    }
+"><bigglow>Molecule        Cost: </bigglow><bigdanger id="molecule">Loading...</bigdanger>
 </body>
