@@ -101,6 +101,7 @@
             setCookie('score',score);
             setCookie('atoms',atoms);
             setCookie('molecules',molecules);
+            setCookie('fuhrers',fuhrers);
         }, 5000);
         setInterval(function () {
             document.getElementById('score').innerHTML = score;
@@ -123,7 +124,7 @@
             }, 700);
         }, 2000)
         setInterval(function () {
-            score = score + 666666 * molecules;
+            score = score + 666666 * fuhrers;
             document.getElementById('fuhrer-button').style.animation = 'activate '+1000+'ms';
             setTimeout(()=>{
                 document.getElementById('fuhrer-button').style.animation = '';
@@ -179,7 +180,7 @@
     <img src="fuhrer.gif" class="upgrade" alt="Molecule" id="fuhrer-button" onclick="
         if (score >= parseInt(document.getElementById('fuhrer-cost').innerHTML)) {
             score = score - parseInt(document.getElementById('fuhrer-cost').innerHTML);
-            atoms = atoms + 1;
+            fuhrers = fuhrers + 1;
         }
         if (!fuhrerClickActive) {
             fuhrerClickActive = true;
