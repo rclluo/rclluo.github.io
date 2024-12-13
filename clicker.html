@@ -100,7 +100,7 @@
         setInterval(function () {
             document.getElementById('score').innerHTML = score;
             document.getElementById('atom-cost').innerHTML = Math.floor(10 * 1.15 ** atoms);
-            document.getElementById('molecule-cost').innerHTML = Math.floor(100 * 1.15 ** atoms);
+            document.getElementById('molecule-cost').innerHTML = Math.floor(100 * 1.15 ** molecules);
         }, 100)
         setInterval(function () {
             score = score + atoms;
