@@ -92,6 +92,11 @@
         } else {
             var molecules = parseInt(getCookie('molecules'));
         }
+        if (isNaN(getCookie('fuhrers')) || getCookie('fuhrers')=='') {
+            var fuhrers = 0;
+        } else {
+            var fuhrers = parseInt(getCookie('fuhrers'));
+        }
         setInterval(function () {
             setCookie('score',score);
             setCookie('atoms',atoms);
@@ -101,6 +106,7 @@
             document.getElementById('score').innerHTML = score;
             document.getElementById('atom-cost').innerHTML = Math.floor(10 * 1.15 ** atoms);
             document.getElementById('molecule-cost').innerHTML = Math.floor(100 * 1.15 ** molecules);
+            document.getElementById('molecule-cost').innerHTML = Math.floor(1000000 * 1.15 ** fuhrers);
         }, 100)
         setInterval(function () {
             score = score + atoms;
@@ -116,8 +122,17 @@
                 document.getElementById('molecule-button').style.animation = '';
             }, 700);
         }, 2000)
+        setInterval(function () {
+            score = score + 666666 * molecules;
+            document.getElementById('fuhrer-button').style.animation = 'activate '+1000+'ms';
+            setTimeout(()=>{
+                document.getElementById('fuhrer-button').style.animation = '';
+            }, 1000);
+        }, 3000)
         let clickActive = false;
         let atomClickActive = false;
+        let moleculeClickActive = false;
+        let fuhrerClickActive = false;
     </script>
     <img src="https://media0.giphy.com/media/l5JbspfwZ0yjHjlJ0K/giphy.gif?cid=6c09b952kz543h1610f03nynl918hf6w4luwstdtg8zzr0h6" alt="World" onclick="  
         score = score + 1;
@@ -147,17 +162,32 @@
     "><bigglow>Atom        Cost: </bigglow><bigdanger id="atom-cost">Loading...</bigdanger>
     <br>
     <img src="molecule.gif" class="upgrade" alt="Molecule" id="molecule-button" onclick="
-    if (score >= parseInt(document.getElementById('molecule-cost').innerHTML)) {
-        score = score - parseInt(document.getElementById('molecule-cost').innerHTML);
-        atoms = atoms + 1;
-    }
-    if (!atomClickActive) {
-        atomClickActive = true;
-        this.style.animation = 'bounce '+150+'ms';
-        setTimeout(()=>{
-            this.style.animation = '';
-            atomClickActive = false;
-        }, 150);
-    }
-"><bigglow>Molecule        Cost: </bigglow><bigdanger id="molecule-cost">Loading...</bigdanger>
+        if (score >= parseInt(document.getElementById('molecule-cost').innerHTML)) {
+            score = score - parseInt(document.getElementById('molecule-cost').innerHTML);
+            atoms = atoms + 1;
+        }
+        if (!moleculeClickActive) {
+            moleculeClickActive = true;
+            this.style.animation = 'bounce '+150+'ms';
+            setTimeout(()=>{
+                this.style.animation = '';
+                moleculeClickActive = false;
+            }, 150);
+        }
+    "><bigglow>Molecule        Cost: </bigglow><bigdanger id="molecule-cost">Loading...</bigdanger>
+    <br>
+    <img src="molecule.gif" class="upgrade" alt="Molecule" id="fuhrer-button" onclick="
+        if (score >= parseInt(document.getElementById('fuhrer-cost').innerHTML)) {
+            score = score - parseInt(document.getElementById('fuhrer-cost').innerHTML);
+            atoms = atoms + 1;
+        }
+        if (!fuhrerClickActive) {
+            fuhrerClickActive = true;
+            this.style.animation = 'bounce '+150+'ms';
+            setTimeout(()=>{
+                this.style.animation = '';
+                fuhrerClickActive = false;
+            }, 150);
+        }
+    "><bigglow>Fuhrer        Cost: </bigglow><bigdanger id="fuhrer-cost">Loading...</bigdanger>
 </body>
