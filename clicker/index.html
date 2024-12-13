@@ -53,6 +53,9 @@
             width: 100px;
             height: 100px;
         }
+        div {
+            border: 1px solid white;
+        }
     </style>
 </head>
 <body>
@@ -135,18 +138,21 @@
         let moleculeClickActive = false;
         let fuhrerClickActive = false;
     </script>
-    <img src="https://media0.giphy.com/media/l5JbspfwZ0yjHjlJ0K/giphy.gif?cid=6c09b952kz543h1610f03nynl918hf6w4luwstdtg8zzr0h6" alt="World" onclick="  
-        score = score + 1;
-        if (!clickActive) {
-            clickActive = true;
-            this.style.animation = 'flash '+150+'ms';
-            setTimeout(()=>{
-                this.style.animation = '';
-                clickActive = false;
-            }, 150);
-        }
-    ">
+    <div>
+        <img src="https://media0.giphy.com/media/l5JbspfwZ0yjHjlJ0K/giphy.gif?cid=6c09b952kz543h1610f03nynl918hf6w4luwstdtg8zzr0h6" alt="World" onclick="  
+            score = score + 1;
+            if (!clickActive) {
+                clickActive = true;
+                this.style.animation = 'flash '+150+'ms';
+                setTimeout(()=>{
+                    this.style.animation = '';
+                    clickActive = false;
+                }, 150);
+            }
+        ">
+    </div>
     <br>
+    <div>
     <img src="atom.gif" class="upgrade" alt="Atom" id="atom-button" onclick="
         if (score >= parseInt(document.getElementById('atom-cost').innerHTML)) {
             score = score - parseInt(document.getElementById('atom-cost').innerHTML);
@@ -160,8 +166,12 @@
                 atomClickActive = false;
             }, 150);
         }
-    "><bigglow>Atom			Cost: </bigglow><bigdanger id="atom-cost">Loading...</bigdanger>
+    "><bigglow>Atom</bigglow>
     <br>
+    <bigglow>Cost: </bigglow><bigdanger id="atom-cost">Loading...</bigdanger>
+    </div>
+    <br>
+    <div>
     <img src="molecule.gif" class="upgrade" alt="Molecule" id="molecule-button" onclick="
         if (score >= parseInt(document.getElementById('molecule-cost').innerHTML)) {
             score = score - parseInt(document.getElementById('molecule-cost').innerHTML);
@@ -175,8 +185,12 @@
                 moleculeClickActive = false;
             }, 150);
         }
-    "><bigglow>Molecule		Cost: </bigglow><bigdanger id="molecule-cost">Loading...</bigdanger>
+    "><bigglow>Molecule</bigglow>
     <br>
+    <bigglow>Cost: </bigglow><bigdanger id="molecule-cost">Loading...</bigdanger>
+    </div>
+    <br>
+    <div>
     <img src="fuhrer.gif" class="upgrade" alt="Molecule" id="fuhrer-button" onclick="
         if (score >= parseInt(document.getElementById('fuhrer-cost').innerHTML)) {
             score = score - parseInt(document.getElementById('fuhrer-cost').innerHTML);
@@ -190,5 +204,8 @@
                 fuhrerClickActive = false;
             }, 150);
         }
-    "><bigglow>Führer		Cost: </bigglow><bigdanger id="fuhrer-cost">Loading...</bigdanger>
+    "><bigglow>Führer</bigglow>
+    <br>
+    <bigglow>Cost: </bigglow><bigdanger id="fuhrer-cost">Loading...</bigdanger>
+    </div>
 </body>
