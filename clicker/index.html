@@ -175,7 +175,7 @@
     <img src="molecule.gif" class="upgrade" alt="Molecule" id="molecule-button" onclick="
         if (score >= parseInt(document.getElementById('molecule-cost').innerHTML)) {
             score = score - parseInt(document.getElementById('molecule-cost').innerHTML);
-            atoms = atoms + 1;
+            molecules = molecules + 1;
         }
         if (!moleculeClickActive) {
             moleculeClickActive = true;
@@ -186,10 +186,8 @@
             }, 150);
         }
     "><bigglow>Molecule</bigglow>
-    <br>
     <bigglow>Cost: </bigglow><bigdanger id="molecule-cost">Loading...</bigdanger>
     </div>
-    <br>
     <div>
     <img src="fuhrer.gif" class="upgrade" alt="Molecule" id="fuhrer-button" onclick="
         if (score >= parseInt(document.getElementById('fuhrer-cost').innerHTML)) {
