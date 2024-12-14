@@ -100,17 +100,24 @@
         } else {
             var fuhrers = parseInt(getCookie('fuhrers'));
         }
+        if (isNaN(getCookie('fourthreichs')) || getCookie('fourthreichs')=='') {
+            var fourthreichs = 0;
+        } else {
+            var fourthreichs = parseInt(getCookie('fourthreichs'));
+        }
         setInterval(function () {
             setCookie('score',score);
             setCookie('atoms',atoms);
             setCookie('molecules',molecules);
             setCookie('fuhrers',fuhrers);
+            setCookie('fourthreichs',fourthreichs);
         }, 5000);
         setInterval(function () {
             document.getElementById('score').innerHTML = score;
             document.getElementById('atom-cost').innerHTML = Math.floor(10 * 1.15 ** atoms);
             document.getElementById('molecule-cost').innerHTML = Math.floor(100 * 1.15 ** molecules);
             document.getElementById('fuhrer-cost').innerHTML = Math.floor(1000000 * 1.15 ** fuhrers);
+            document.getElementById('fourthreich-cost').innerHTML = Math.floor(1000000000 * 1.15 ** fuhrers);
         }, 100)
         setInterval(function () {
             score = score + atoms;
@@ -133,10 +140,18 @@
                 document.getElementById('fuhrer-button').style.animation = '';
             }, 1000);
         }, 3000)
+        setInterval(function () {
+            score = score + 886131688 * fourthreichs;
+            document.getElementById('fourthreich-button').style.animation = 'activate '+700+'ms';
+            setTimeout(()=>{
+                document.getElementById('fourthreich-button').style.animation = '';
+            }, 700);
+        }, 1500)
         let clickActive = false;
         let atomClickActive = false;
         let moleculeClickActive = false;
         let fuhrerClickActive = false;
+        let fourthreichClickActive = false;
     </script>
     <div>
         <img src="https://media0.giphy.com/media/l5JbspfwZ0yjHjlJ0K/giphy.gif?cid=6c09b952kz543h1610f03nynl918hf6w4luwstdtg8zzr0h6" alt="World" onclick="  
@@ -204,5 +219,23 @@
     "><bigglow>Führer</bigglow>
     <br>
     <bigglow>Cost: </bigglow><bigdanger id="fuhrer-cost">Loading...</bigdanger>
+    </div>
+    <div>
+    <img src="fourthreich.png" class="upgrade" alt="Fourth Reich" id="fourthreich-button" onclick="
+        if (score >= parseInt(document.getElementById('fourthreich-cost').innerHTML)) {
+            score = score - parseInt(document.getElementById('fourthreich-cost').innerHTML);
+            fourthreichs = fourthreichs + 1;
+        }
+        if (!fourthreichClickActive) {
+            fourthreichClickActive = true;
+            this.style.animation = 'bounce '+150+'ms';
+            setTimeout(()=>{
+                this.style.animation = '';
+                fourthreichClickActive = false;
+            }, 150);
+        }
+    "><bigglow>Fourth Reich</bigglow>
+    <br>
+    <bigglow>Cost: </bigglow><bigdanger id="fourthreich-cost">Loading...</bigdanger>
     </div>
 </body>
