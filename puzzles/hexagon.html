@@ -1,9 +1,18 @@
 <h1>Hexagon</h1>
 <canvas id="canvas" height="300" width="750"></canvas>
 <script>
+    function getRandomColor() {
+          var letters = '0123456789ABCDEF';
+          var color = '#';
+          for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+          }
+          return color;
+    }
+    
     var ctx=document.getElementById('canvas').getContext('2d');
 
-    ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
+    ctx.fillStyle=getRandomColor();
     ctx.beginPath();
     ctx.moveTo(150,0);
     ctx.lineTo(600,0);
@@ -14,7 +23,7 @@
     ctx.closePath();
     ctx.fill();
 
-    ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
+    ctx.fillStyle=getRandomColor();
     ctx.beginPath();
     ctx.moveTo(150,0);
     ctx.lineTo(450,0);
@@ -22,7 +31,7 @@
     ctx.closePath();
     ctx.fill();
 
-    ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
+    ctx.fillStyle=getRandomColor();
     ctx.beginPath();
     ctx.lineTo(450,0);
     ctx.lineTo(450,300);
@@ -30,7 +39,7 @@
     ctx.closePath();
     ctx.fill();
 
-    ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
+    ctx.fillStyle=getRandomColor();
     ctx.beginPath();
     ctx.lineTo(150,0);
     ctx.lineTo(0,150);
@@ -38,7 +47,7 @@
     ctx.closePath();
     ctx.fill();
 
-    ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
+    ctx.fillStyle=getRandomColor();
     ctx.beginPath();
     ctx.moveTo(450,0);
     ctx.lineTo(600,0);
@@ -47,7 +56,7 @@
     ctx.closePath();
     ctx.fill();
 
-    ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
+    ctx.fillStyle=getRandomColor();
     ctx.beginPath();
     ctx.lineTo(600,150);
     ctx.lineTo(750,150);
