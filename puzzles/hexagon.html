@@ -1,56 +1,58 @@
-<h1>Rectangle</h1>
-<canvas id="canvas" height="500" width="1000"></canvas>
+<h1>Hexagon</h1>
+<canvas id="canvas" height="300" width="750"></canvas>
 <script>
     var ctx=document.getElementById('canvas').getContext('2d');
 
     ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
     ctx.beginPath();
-    ctx.moveTo(0,0);
-    ctx.lineTo(1000,0);
-    ctx.lineTo(1000,500);
-    ctx.lineTo(0,500);
+    ctx.moveTo(150,0);
+    ctx.lineTo(600,0);
+    ctx.lineTo(750,150);
+    ctx.lineTo(600,300);
+    ctx.lineTo(150,300);
+    ctx.lineTo(0,150);
     ctx.closePath();
     ctx.fill();
 
     ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
     ctx.beginPath();
-    ctx.lineTo(500,0);
-    ctx.lineTo(1000,0);
-    ctx.lineTo(500,500);
+    ctx.moveTo(150,0);
+    ctx.lineTo(450,0);
+    ctx.lineTo(150,300);
     ctx.closePath();
     ctx.fill();
 
     ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
     ctx.beginPath();
-    ctx.lineTo(1000,0);
-    ctx.lineTo(1000,500);
-    ctx.lineTo(500,500);
-    ctx.closePath();
-    ctx.fill();
-    
-    ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
-    ctx.beginPath();
-    ctx.moveTo(500,0);
-    ctx.lineTo(250,250);
-    ctx.lineTo(500,500);
+    ctx.lineTo(450,0);
+    ctx.lineTo(450,300);
+    ctx.lineTo(150,300);
     ctx.closePath();
     ctx.fill();
 
     ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
     ctx.beginPath();
-    ctx.moveTo(250,250);
-    ctx.lineTo(250,500);
-    ctx.lineTo(0,500);
-    ctx.lineTo(0,250);
+    ctx.lineTo(150,0);
+    ctx.lineTo(0,150);
+    ctx.lineTo(150,300);
     ctx.closePath();
     ctx.fill();
 
     ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
     ctx.beginPath();
-    ctx.lineTo(250,250);
-    ctx.lineTo(500,0);
-    ctx.lineTo(250,0);
-    ctx.lineTo(0,250);
+    ctx.moveTo(450,0);
+    ctx.lineTo(600,0);
+    ctx.lineTo(600,150);
+    ctx.lineTo(450,150);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle=Math.floor(Math.random()*16777215).toString(16);
+    ctx.beginPath();
+    ctx.lineTo(600,150);
+    ctx.lineTo(750,150);
+    ctx.lineTo(600,300);
+    ctx.lineTo(450,300);
     ctx.closePath();
     ctx.fill();
 </script>
