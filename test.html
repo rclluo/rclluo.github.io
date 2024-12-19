@@ -40,7 +40,7 @@
         }
         
         async function handleInput() {
-            let input = prompt('Enter an element or type !list for all elements or tyle !stop to stop.').trim();
+            let input = prompt('Enter an element or type !list for all elements or type !stop to stop.').trim();
             while (true) {
                 if (input.toLowerCase() === '!list') {
                     alert(`Elements: ${elements.join(', ')}`);
@@ -74,7 +74,7 @@
                         }
                     }
                 }
-                input = prompt('Enter an element or type !list for all elements or tyle !stop to stop.').trim();
+                input = prompt('Enter an element or type !list for all elements or type !stop to stop.').trim();
             }
         }
         
