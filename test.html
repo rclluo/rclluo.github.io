@@ -40,11 +40,14 @@
         }
         
         async function handleInput() {
-            let input = prompt('Enter an element or type !list for all elements').trim();
+            let input = prompt('Enter an element or type !list for all elements or tyle !stop to stop.').trim();
             while (true) {
-                if (input.toLowerCase() === '!list' || input.toLowerCase() === '!elements') {
+                if (input.toLowerCase() === '!list') {
                     alert(`Elements: ${elements.join(', ')}`);
-                } else {
+                } else if (input.toLowerCase() === '!stop') {
+                    break;
+                }
+                else {
                     if (!elements.includes(input)) {
                         alert('Element not discovered yet');
                     } else {
@@ -71,7 +74,7 @@
                         }
                     }
                 }
-                input = prompt('Enter an element or type !list for all elements').trim();
+                input = prompt('Enter an element or type !list for all elements or tyle !stop to stop.').trim();
             }
         }
         
