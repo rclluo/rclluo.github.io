@@ -1,0 +1,80 @@
+<head>
+    <style>
+        body {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const elements = ['Water', 'Fire', 'Air', 'Earth'];
+        
+        // Function to fetch Wikipedia links with a new CORS proxy
+        async function getWikipediaLinks(pageName) {
+            try {
+                const proxyUrl = 'https://api.allorigins.win/raw?url=';
+                const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&prop=links&titles=${encodeURIComponent(pageName)}&pllimit=max&format=json`;
+                const response = await fetch(proxyUrl + encodeURIComponent(apiUrl), {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                    }
+                });
+                if (!response.ok) {
+                    alert('Failed to retrieve data from Wikipedia.');
+                    throw new Error('Failed to fetch data from Wikipedia API');
+                }
+                const data = await response.json();
+                const pages = data.query.pages;
+                const page = pages[Object.keys(pages)[0]];
+                if (page && page.links) {
+                    return page.links.map(link => link.title);
+                }
+                return [];
+            } catch (error) {
+                console.error('Error fetching Wikipedia page:', error);
+                alert('Failed to retrieve data from Wikipedia.');
+                return [];
+            }
+        }
+        
+        async function handleInput() {
+            let input = prompt('Enter an element or type !list for all elements').trim();
+            while (true) {
+                if (input.toLowerCase() === '!list' || input.toLowerCase() === '!elements') {
+                    alert(`Elements: ${elements.join(', ')}`);
+                } else {
+                    if (!elements.includes(input)) {
+                        alert('Element not discovered yet');
+                    } else {
+                        let secondElement = prompt('Enter the second element').trim();
+                        if (!elements.includes(secondElement)) {
+                            alert('Element not discovered yet');
+                        } else {
+                            const linksA = await getWikipediaLinks(input);
+                            const linksB = await getWikipediaLinks(secondElement);
+                            const commonLinks = linksA.filter(link => linksB.includes(link));
+                            let found = false;
+                            for (const link of commonLinks) {
+                                if (!link.includes('(identifier)')) {
+                                    elements.push(link);
+                                    alert(`Discovered new element: ${link}`);
+                                    found = true;
+                                    break;
+                                }
+                            }
+        
+                            if (!found) {
+                                alert('None');
+                            }
+                        }
+                    }
+                }
+                input = prompt('Enter an element or type !list for all elements').trim();
+            }
+        }
+        
+        handleInput();
+    </script>
+</body>
