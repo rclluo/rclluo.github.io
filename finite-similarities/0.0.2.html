@@ -56,10 +56,12 @@
         }
         
         async function merge(firstElement,secondElement) {
+            alert("Element not found yet.")
             if (!elements.includes(firstElement)) {
                 return null;
             } else {
                 if (!elements.includes(secondElement)) {
+                    alert("Element not found yet.")
                     return null;
                 } else {
                     const linksA = await getWikipediaLinks(firstElement);
@@ -73,6 +75,7 @@
                         }
                     }
                     if (!found) {
+                        alert("Failed to merge.")
                         return null;
                     }
                 }
