@@ -1,0 +1,92 @@
+<head>
+    <style>
+        body {
+            background-color: #000;
+        }
+        glow-text {
+            background: #000;
+            color: #0f0;
+            text-shadow:
+                1px 1px 10px #4b4,
+                1px 1px 10px #777;
+            font-size: 12px;
+        }
+        input {
+            color: #0f0;
+            border-color: #0f0;
+            background-color: #000;
+        }
+        button {
+            border-color: #000;
+            background-color: #0f0;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const elements = ['Water', 'Fire', 'Air', 'Earth'];
+        async function getWikipediaLinks(pageName) {
+            try {
+                const proxyUrl = 'https://api.allorigins.win/raw?url=';
+                const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&prop=links&titles=${encodeURIComponent(pageName)}&pllimit=max&format=json`;
+                const response = await fetch(proxyUrl + encodeURIComponent(apiUrl), {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                    }
+                });
+                if (!response.ok) {
+                    alert('Failed to retrieve data from Wikipedia.');
+                    throw new Error('Failed to fetch data from Wikipedia API');
+                }
+                const data = await response.json();
+                const pages = data.query.pages;
+                const page = pages[Object.keys(pages)[0]];
+                if (page && page.links) {
+                    return page.links.map(link => link.title);
+                }
+                return [];
+            } catch (error) {
+                console.error('Error fetching Wikipedia page:', error);
+                alert('Failed to retrieve data from Wikipedia.');
+                return [];
+            }
+        }
+        
+        async function merge(firstElement,secondElement) {
+            if (!elements.includes(firstElement)) {
+                return null;
+            } else {
+                if (!elements.includes(secondElement)) {
+                    return null;
+                } else {
+                    const linksA = await getWikipediaLinks(firstElement);
+                    const linksB = await getWikipediaLinks(secondElement);
+                    const commonLinks = linksA.filter(link => linksB.includes(link));
+                    let found = false;
+                    for (const link of commonLinks) {
+                        if (!link.includes('(identifier)') && !link.includes(':')) {
+                            elements.push(link);
+                            document.getElementById('result').innerHTML = link;
+                        }
+                    }
+                    if (!found) {
+                        return null;
+                    }
+                }
+            }
+        }
+    </script>
+    <input type="text" id="element1"><input type="text" id="element2">
+    <br>
+    <button onclick="
+        merge(document.getElementById('element1').value,
+              document.getElementById('element2').value);
+    ">
+        Merge!
+    </button>
+    <br>
+    <glow-text id="result"></glow-text>
+</body>
