@@ -30,7 +30,7 @@
 </head>
 <body>
     <script>
-        const elements = ['Water', 'Fire', 'Air', 'Earth'];
+        const elements = new Set(['Water', 'Fire', 'Air', 'Earth']);
         async function getWikipediaLinks(pageName) {
             try {
                 const proxyUrl = 'https://api.allorigins.win/raw?url=';
@@ -61,11 +61,11 @@
         }
         
         async function merge(firstElement,secondElement) {
-            if (!elements.includes(firstElement)) {
+            if (!elements.has(firstElement)) {
                 alert("Element not found yet.")
                 return null;
             } else {
-                if (!elements.includes(secondElement)) {
+                if (!elements.has(secondElement)) {
                     alert("Element not found yet.")
                     return null;
                 } else {
@@ -75,7 +75,8 @@
                     let found = false;
                     for (const link of commonLinks) {
                         if (!link.includes('(identifier)') && !link.includes(':')) {
-                            elements.push(link);
+                            console.log(link);
+                            elements.add(link);
                             document.getElementById('result').innerHTML = link;
                             document.getElementById('preview').src = 'https://wikipedia.org/wiki/' + link;
                             return link;
@@ -103,7 +104,7 @@
     <iframe id="preview" src="https://wikipedia.org/wiki/Lorem ipsum"></iframe>
     <script>
         setInterval(function () {
-            document.getElementById('elements').innerHTML=elements}
+            document.getElementById('elements').innerHTML=Array.from(elements)}
         ,100);
     </script>
     <br>
