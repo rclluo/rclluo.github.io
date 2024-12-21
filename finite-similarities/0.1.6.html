@@ -1,0 +1,150 @@
+<head>
+    <style>
+        body {
+            background-color: #000;
+        }
+        glow-text {
+            background: #000;
+            color: #0f0;
+            text-shadow:
+                1px 1px 10px #4b4,
+                1px 1px 10px #777;
+            font-size: 12px;
+        }
+        input {
+            width: 50%;
+            color: #0f0;
+            border-color: #0f0;
+            background-color: #000;
+        }
+        button {
+            border-color: #000;
+            background-color: #0f0;
+            color: #000;
+        }
+        iframe {
+            border: #0f0;
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function levenshtein(str1, str2) {
+            const len1=str1.length;
+            const len2=str2.length;
+            const dp=Array(len1+1).fill(null).map(()=>Array(len2 + 1).fill(0));
+            for (let i=0; i<=len1; i++) {
+                dp[i][0]=i*0.7;
+            }
+            for (let j=0; j<=len2; j++) {
+                dp[0][j]=j*0.6;
+            }
+            for (let i=1; i<=len1; i++) {
+                for (let j=1; j<=len2; j++) {
+                    const cost=str1[i-1]===str2[j-1]?0.0:0.5;
+                    dp[i][j]=Math.min(
+                        dp[i-1][j]+0.7,dp[i][j-1]+0.6,dp[i-1][j-1]+cost
+                    );
+                }
+            }
+            return 3*dp[len1][len2]/((len1+len2)/2);
+        }
+        var elements = new Set()
+        if (localStorage.getItem('elements').length>10) {
+            var elements = new Set(JSON.parse(localStorage.getItem('elements')));
+        } else {
+            var elements = new Set(['Fire','Water','Air','Earth']);
+        }
+        setInterval(() => {
+            firstElement=document.getElementById('element1').value;
+            secondElement=document.getElementById('element2').value;
+            for (const i of elements) {
+                if (levenshtein(i,firstElement)<=0.7) {
+                    document.getElementById('element1').value=i
+                } else if (levenshtein(i,secondElement)<=0.7) {
+                    document.getElementById('element2').value=i
+                }
+            }
+        }, 500);
+        async function getWikipediaLinks(pageName) {
+            try {
+                const proxyUrl = 'https://api.allorigins.win/raw?url=';
+                const apiUrl = `https://en.wikipedia.org/w/api.php?action=query&prop=links&titles=${encodeURIComponent(pageName)}&pllimit=max&format=json`;
+                const response = await fetch(proxyUrl + encodeURIComponent(apiUrl), {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                    }
+                });
+                if (!response.ok) {
+                    alert('Failed to retrieve data from Wikipedia.');
+                    throw new Error('Failed to fetch data from Wikipedia API');
+                }
+                const data = await response.json();
+                const pages = data.query.pages;
+                const page = pages[Object.keys(pages)[0]];
+                if (page && page.links) {
+                    return page.links.map(link => link.title);
+                }
+                return [];
+            } catch (error) {
+                console.error('Error fetching Wikipedia page:', error);
+                alert('Failed to retrieve data from Wikipedia.');
+                return [];
+            }
+        }
+        
+        async function merge(firstElement,secondElement) {
+            if (!elements.has(firstElement)) {
+                alert("Element not found yet.")
+                return null;
+            } else {
+                if (!elements.has(secondElement)) {
+                    alert("Element not found yet.")
+                    return null;
+                } else {
+                    const linksA = await getWikipediaLinks(firstElement);
+                    const linksB = await getWikipediaLinks(secondElement);
+                    const commonLinks = linksA.filter(link => linksB.includes(link));
+                    let found = false;
+                    for (const link of commonLinks) {
+                        if (!link.includes('(identifier)') && !link.includes(':')) {
+                            console.log(link);
+                            elements.add(link);
+                            document.getElementById('result').innerHTML = link;
+                            document.getElementById('preview').src = 'https://wikipedia.org/wiki/' + link;
+                            return link;
+                        }
+                    }
+                    if (!found) {
+                        alert("Failed to merge.")
+                        return null;
+                    }
+                }
+            }
+        }
+    </script>
+    <input type="text" id="element1" placeholder="First Element"><input type="text" id="element2" placeholder="Second Element">
+    <br>
+    <button onclick="
+        merge(document.getElementById('element1').value,
+              document.getElementById('element2').value);
+    ">
+        Merge!
+    </button>
+    <br>
+    <glow-text id="result"></glow-text>
+    <br>
+    <iframe id="preview" src="https://wikipedia.org/wiki/Lorem ipsum"></iframe>
+    <script>
+        setInterval(function () {
+            document.getElementById('elements').innerHTML=Array.from(elements);
+            localStorage.setItem('elements',JSON.stringify(Array.from(elements)))
+        },100);
+    </script>
+    <br>
+    <glow-text>Currently found elements: </glow-text><glow-text id="elements"></glow-text>
+</body>
